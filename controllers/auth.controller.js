@@ -9,6 +9,8 @@ const sendToken = (user, res, statusCode) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    sameSite: "none", // ✅ cross-site cookie allowed
+    secure: process.env.NODE_ENV === "production",
   };
 
   res.status(statusCode).cookie("token", token, options).json({
