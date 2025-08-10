@@ -5,12 +5,12 @@ const isAuth = (req, res, next) => {
   const token = req.cookies.token;
   if (!token)
     return next(
-      createError(401, "You are not authorized to access this route")
+      createError(401, "You are not authorized to access this route, as token is not present")
     );
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err)
       return next(
-        createError(401, "You are not authorized to access this route")
+        createError(401, "You are not authorized to access this route, JWT verify error")
       );
     req.user = decoded;
     next();
