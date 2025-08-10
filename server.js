@@ -20,7 +20,7 @@ console.log("DB_URI", DB_URI);
 console.log("PORT", PORT);
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: ["https://gigly-client.vercel.app/","http://localhost:5173", "http://127.0.0.1:5173"],
     credentials: true,
   })
 );
